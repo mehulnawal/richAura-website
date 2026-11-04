@@ -1,0 +1,8 @@
+{
+  "name": "rich-aura-homepage",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Rich Aura local homepage preview — no build dependencies",
+  "scripts": { "dev": "node scripts/serve.mjs", "check": "node scripts/check.mjs" },
+  "engines": { "node": ">=20" }
+}

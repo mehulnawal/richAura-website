@@ -1,0 +1,11 @@
+/* Brand-led palette v4: official-logo cyan, ink and warm white. Original styles and prior palettes are preserved. */
+:root{--paper:#f5f6f2;--ink:#18272e;--blue:#176b88;--muted:#5e6d72;--cyan:#deedf1;--line:#d6dfdf;--lime:#9ed9e8}
+.site-header{background:rgba(245,246,242,.96)}
+.nav-cta{background:var(--ink);color:#fff;border-color:var(--ink)}.nav-cta:hover{background:var(--blue);border-color:var(--blue)}
+.button-dark{background:var(--ink)}.button-dark:hover{background:var(--blue)}
+.brands-section,.testimonials-section,.service-process{background:#e9eeeb}.partners-board{box-shadow:7px 7px 0 #cbdee0}.industry-list li{background:#f5f6f2;color:#375966;border-color:#bdd0d1}
+.service-card,.service-card:nth-child(-n+2),.service-card:last-child{background:#e8f0f1;border-color:#c4d7db}.service-card:nth-child(2){background:#e7eded}.service-card:hover,.service-card:focus-within{background:#daebef}
+.work-section{background:#14242c}.work-section h2>span{color:#9ed9e8}.case-study{border-color:#43575e}.results-panel{background:#c5e4eb}.case-study:nth-child(2) .results-panel{background:#dde7e5}.case-study:nth-child(2) .case-metrics dt{color:#285c66}.case-metrics dt{color:#17637e}.case-metrics dd{color:#375a64}
+.contact-panel{background:#142a34}.contact-copy h2 span{color:#98d7e8}.contact-signal path{stroke:#8fcfe2}.button-light{background:#b3e1ea}.button-light:hover{background:#d0edf2}
+.founder-initial,.contact-symbol{background:#d3e9ed;color:#17637e}.testimonials-grid figure,.testimonials-grid figure+figure{background:#f5f6f2;border-color:#c6d5d3;box-shadow:0 6px 0 #d0deda}.testimonial-marker{background:#d9e9e9;color:#176b88}
+.service-detail:nth-child(2) .service-visual{background:#e0eaf0}.service-detail:nth-child(3) .service-visual{background:#e4ece8}.service-detail:nth-child(4) .service-visual{background:#ecece4}.enquiry-card{box-shadow:7px 7px 0 #dce8e5}.next-steps{background:#e8efea}

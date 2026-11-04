@@ -1,0 +1,26 @@
+[build]
+  publish = "dist"
+  command = "node scripts/check.mjs"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[redirects]]
+  from = "/services"
+  to = "/services.html"
+  status = 200
+
+[[redirects]]
+  from = "/services/"
+  to = "/services.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact/"
+  to = "/contact.html"
+  status = 200

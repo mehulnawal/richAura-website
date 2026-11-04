@@ -1,0 +1,19 @@
+# Local client handoff, review artifacts and workspace guidance
+RichAura_Codex_Handoff/
+docs/
+*.zip
+AGENTS.md
+scripts/enable-mobile-preview.ps1
+
+# Local dependencies, credentials and editor state
+node_modules/
+.netlify/
+.env
+.env.*
+!.env.example
+.codex/
+.agents/
+.aws/
+.DS_Store
+Thumbs.db
+*.log
