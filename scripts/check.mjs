@@ -3,6 +3,12 @@ import { readFile, access } from 'node:fs/promises';
 import vm from 'node:vm';
 const root = new URL('../dist/', import.meta.url);
 const html = await readFile(new URL('index.html', root), 'utf8');
+for (const file of ['index.html', 'services.html', 'contact.html']) {
+  const page = await readFile(new URL(file, root), 'utf8');
+  for (const [, asset] of page.matchAll(/(?:src|href)="([^"?#]+\.(?:css|js|svg|png|ttf))"/g)) {
+    await access(new URL(asset.replace(/^\//, ''), root));
+  }
+}
 const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
 assert.equal(ids.length, new Set(ids).size, 'IDs must be unique');
 for (const [, id] of html.matchAll(/href="#([^"]+)"/g)) assert(ids.includes(id), `Missing anchor: ${id}`);
@@ -34,8 +40,7 @@ assert.equal(config.whatsappRecipient, '919879216262');
 const url = new URL(`https://wa.me/${config.whatsappRecipient}?text=${encodeURIComponent(config.whatsappMessage)}`);
 assert.equal(url.searchParams.get('text'), config.whatsappMessage, 'WhatsApp text must round trip');
 new vm.Script(await readFile(new URL('app.js', root), 'utf8'));
-new vm.Script(await readFile(new URL('aura.js', root), 'utf8'));
-for (const asset of ['aura.js','aura.css','palette.css']) await access(new URL(asset, root));
+for (const asset of ['reference.css','palette.css','assets/growth-target.svg']) await access(new URL(asset, root));
 const enquiryScope = {};
 vm.runInNewContext(await readFile(new URL('enquiry.js', root), 'utf8'), enquiryScope);
 const enquiry = enquiryScope.RichAuraEnquiry;
