@@ -34,7 +34,7 @@ h2,h3{font-family:Georgia,'Times New Roman',serif}h2{font-weight:700;letter-spac
 @media(max-width:760px){.service-jump a:first-child,.service-jump a:nth-child(3){padding-left:13px}.service-detail{scroll-margin-top:85px}}
 .nav-wrap{flex-wrap:nowrap}
 /* One gutter system: legacy container padding must not compound the fluid width. */
-.brand img{background:#102832;padding:4px;border-radius:4px}
+.brand img{background:transparent;padding:4px;border-radius:4px}
 .brands-story>p:not(.eyebrow){max-width:850px;margin-inline:auto}
 @media(max-width:1000px){.side-case-link{display:none}}
 :root{--page-gutter:clamp(24px,4.7vw,100px)}
@@ -56,3 +56,11 @@ h2,h3{font-family:Georgia,'Times New Roman',serif}h2{font-weight:700;letter-spac
 @media(max-width:1000px){.growth-hero-grid{min-height:500px}.hero-benefits li{font-size:10px}.growth-copy h1{font-size:43px}.hero-summary{font-size:18px}.approach-intro{gap:30px;padding:30px}.case-explainer{display:block}.case-explainer>div+div{margin-top:15px}}
 @media(max-width:760px){:root{--page-gutter:20px}.nav-wrap.container{width:calc(100% - 32px);height:66px;min-height:66px;gap:12px}.site-header .brand img{width:35px;height:43px}.site-header .brand-name{font-size:14px}.js #main-nav{top:66px}.growth-hero-grid{display:flex;min-height:0;padding-block:32px 20px;gap:12px}.growth-copy h1{font-size:clamp(29px,7.5vw,48px);letter-spacing:-1px}.hero-summary{font-size:16px}.hero-benefits{padding:16px 4px}.hero-benefits li{font-size:9px;padding:0 5px}.hero-benefits span{font-size:26px}.growth-visual{width:75%;max-height:290px}.service-card,.service-card:nth-child(-n+2){padding:28px 22px}.service-card h3{font-size:27px}.service-card>p{font-size:15px}.case-cover strong{font-size:24px}.case-metrics dd,.case-metrics .primary-result dd{font-size:10px}.approach-intro{display:flex;flex-direction:column;padding:25px;gap:0}.approach-intro .founder{order:-1;border-right:0;border-bottom:1px solid #cbdce2;flex-direction:row;align-items:center;justify-content:flex-start;padding:0 0 24px;margin-bottom:24px;width:100%}.founder-initial{width:58px;height:58px;font-size:30px;flex-shrink:0}.founder strong{font-size:27px}.founder small{font-size:11px}.approach-intro h2{font-size:29px}.approach-intro>p:not(.eyebrow){font-size:15px}.process-list p{font-size:13px}.process-list small{font-size:9px}.contact-copy>p:not(.eyebrow){font-size:16px}.contact-copy>p.contact-note{font-size:12px}.service-detail{grid-template-columns:1fr;gap:25px}.service-description>p{font-size:16px}.service-description ul{font-size:14px}.service-visual p{font-size:9px}.section-intro{font-size:16px}}
 @media(max-width:380px){.header-contact{display:none}.growth-copy h1{font-size:27px;letter-spacing:-1px}.hero-benefits li{font-size:7px}.brand-name{font-size:14px}.case-cover strong{font-size:21px}.process-list{grid-template-columns:1fr}.process-list p{font-size:12px}}
+/* Subtle menu motion; hidden links remain outside keyboard navigation. */
+.js #main-nav{display:flex;flex-direction:column;gap:0;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-10px);transition:opacity .22s ease,transform .22s ease,visibility 0s linear .22s}
+.js .menu-toggle[aria-expanded=true]+#main-nav{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0);transition-delay:0s}
+.menu-bars{border:0;height:2px;transition:background .2s ease}.menu-bars::before,.menu-bars::after{transition:transform .22s ease,top .22s ease}
+.menu-toggle[aria-expanded=true] .menu-bars{background:transparent}
+.menu-toggle[aria-expanded=true] .menu-bars::before{top:0;transform:rotate(45deg)}
+.menu-toggle[aria-expanded=true] .menu-bars::after{top:0;transform:rotate(-45deg)}
+@media(prefers-reduced-motion:reduce){.js #main-nav,.menu-bars,.menu-bars::before,.menu-bars::after{transition:none}.js #main-nav{transform:none}}

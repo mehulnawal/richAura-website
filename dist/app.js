@@ -42,9 +42,15 @@
   if (menu && nav) {
     menu.hidden = false;
     document.documentElement.classList.add('js');
-    const closeMenu = () => { menu.setAttribute('aria-expanded', 'false'); };
+    const setMenu = open => {
+      menu.setAttribute('aria-expanded', String(open));
+      menu.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+      nav.inert = !open;
+    };
+    const closeMenu = () => setMenu(false);
+    closeMenu();
     menu.addEventListener('click', () => {
-      menu.setAttribute('aria-expanded', String(menu.getAttribute('aria-expanded') !== 'true'));
+      setMenu(menu.getAttribute('aria-expanded') !== 'true');
     });
     nav.addEventListener('click', event => { if (event.target.closest('a')) closeMenu(); });
     document.addEventListener('keydown', event => {
