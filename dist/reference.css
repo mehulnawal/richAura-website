@@ -34,7 +34,7 @@ h2,h3{font-family:Georgia,'Times New Roman',serif}h2{font-weight:700;letter-spac
 @media(max-width:760px){.service-jump a:first-child,.service-jump a:nth-child(3){padding-left:13px}.service-detail{scroll-margin-top:85px}}
 .nav-wrap{flex-wrap:nowrap}
 /* One gutter system: legacy container padding must not compound the fluid width. */
-.brand img{background:transparent;padding:4px;border-radius:4px}
+.brand img{background:#102832;padding:4px;border-radius:4px}
 .brands-story>p:not(.eyebrow){max-width:850px;margin-inline:auto}
 @media(max-width:1000px){.side-case-link{display:none}}
 :root{--page-gutter:clamp(24px,4.7vw,100px)}
