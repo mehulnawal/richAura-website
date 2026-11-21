@@ -1,0 +1,202 @@
+[
+  {
+    "id": "trinity-jewels",
+    "name": "Trinity Jewels",
+    "industry": "Jewellery",
+    "category": "social",
+    "heading": "Jewellery in everyday moments.",
+    "description": "A collection of product, lifestyle and concept-led jewellery creatives, with bracelets, rings and necklaces at the centre of the storytelling.",
+    "images": [
+      "trinity-jewels"
+    ]
+  },
+  {
+    "id": "texlon",
+    "name": "Texlon",
+    "industry": "Textiles / B2B",
+    "category": "social",
+    "heading": "Product stories for a specialist audience.",
+    "description": "Zari product creatives combining spool imagery with clear industrial messaging and product-focused layouts.",
+    "images": [
+      "texlon"
+    ]
+  },
+  {
+    "id": "rich-dusky",
+    "name": "Rich Dusky",
+    "industry": "Bags & accessories",
+    "category": "social",
+    "heading": "Accessories with a distinctive visual world.",
+    "description": "Bags and fashion accessories presented through animal-themed concepts, lifestyle imagery and dramatic product compositions.",
+    "images": [
+      "rich-dusky"
+    ]
+  },
+  {
+    "id": "space-stone",
+    "name": "Space Stone Interior & Architects",
+    "industry": "Interiors",
+    "category": "social",
+    "heading": "Design, spaces and the details in between.",
+    "description": "Interior imagery and branded promotional layouts covering design inspiration, service communication and architectural spaces.",
+    "images": [
+      "space-stone"
+    ]
+  },
+  {
+    "id": "white-the-colour",
+    "name": "White The Colour",
+    "industry": "Fabric & textiles",
+    "category": "social",
+    "heading": "Making fabric the focus.",
+    "description": "Textile-led social creatives pairing close-up fabric details with product information and regional textile stories.",
+    "images": [
+      "white-the-colour"
+    ]
+  },
+  {
+    "id": "panchratna-jewels",
+    "name": "Panchratna Jewels",
+    "industry": "Silver products",
+    "category": "social",
+    "heading": "Silver craft, presented in context.",
+    "description": "A visual collection of silver ceremonial products, decorative details and product compositions.",
+    "images": [
+      "panchratna-jewels"
+    ]
+  },
+  {
+    "id": "customer-education",
+    "name": "Richaura · Marketing Basics",
+    "industry": "Agency content",
+    "category": "agency",
+    "heading": "Define your ideal customer in 30 minutes.",
+    "description": "An eight-slide educational carousel for business owners: study your best customers, understand their needs, find where they spend time and write a clear positioning statement.",
+    "images": [
+      "customer-1",
+      "customer-2",
+      "customer-3",
+      "customer-4",
+      "customer-5",
+      "customer-6",
+      "customer-7",
+      "customer-8"
+    ]
+  },
+  {
+    "id": "industry-content",
+    "name": "Richaura · Industry Stories",
+    "industry": "Agency promotions",
+    "category": "agency",
+    "heading": "One agency. Different business conversations.",
+    "description": "Two examples of industry-specific agency promotions, created for jewellery and zari businesses.",
+    "images": [
+      "agency-jewellery",
+      "agency-zari"
+    ]
+  },
+  {
+    "id": "surat-wholesale",
+    "name": "Surat Wholesale Shop",
+    "industry": "International campaigns",
+    "category": "performance",
+    "heading": "WhatsApp conversations across markets.",
+    "description": "Meta campaign reporting for USA and Canada, Australia, and a kids collection audience in the USA. Reporting period: 1 July–10 October 2026.",
+    "images": [
+      "surat-wholesale"
+    ],
+    "metrics": [
+      [
+        "1,478",
+        "Messaging conversations"
+      ],
+      [
+        "₹61.61",
+        "Cost per conversation"
+      ],
+      [
+        "₹91,053.72",
+        "Amount spent"
+      ]
+    ],
+    "note": "111,128 impressions · 42,704 reach. These results are messaging conversations, not purchase or revenue figures."
+  },
+  {
+    "id": "kesari-exports",
+    "name": "Kesari Exports",
+    "industry": "International campaigns",
+    "category": "performance",
+    "heading": "Different markets. Clearly separated results.",
+    "description": "Meta Ads Manager reporting for five campaigns across the USA, Australia, Canada and the UK. Reporting period: 1 July–31 August 2026.",
+    "images": [
+      "kesari-exports"
+    ],
+    "metrics": [
+      [
+        "424",
+        "Messaging conversations¹"
+      ],
+      [
+        "43",
+        "UK form leads"
+      ],
+      [
+        "₹81.76",
+        "Cost per UK form lead"
+      ]
+    ],
+    "note": "¹ Sum of the four messaging campaigns (250 + 97 + 60 + 17). Form leads are reported separately. This report does not establish revenue or ROAS."
+  },
+  {
+    "id": "linen-fabric-1",
+    "name": "Linen Fabric · Snapshot 1",
+    "industry": "Fabric campaign snapshots",
+    "category": "performance",
+    "heading": "Lead generation, as reported.",
+    "description": "Meta Ads Manager snapshot for a Linen Fabric Leads campaign. Client name and reporting period are not shown.",
+    "images": [
+      "linen-2406"
+    ],
+    "metrics": [
+      [
+        "2,406",
+        "Form leads · snapshot 1"
+      ],
+      [
+        "₹8.75",
+        "Cost per lead · snapshot 1"
+      ],
+      [
+        "₹21,044.06",
+        "Spend · snapshot 1"
+      ]
+    ],
+    "note": "130,199 reach · 322,689 impressions. A separate reporting snapshot; not combined with snapshot 2."
+  },
+  {
+    "id": "linen-fabric-2",
+    "name": "Linen Fabric · Snapshot 2",
+    "industry": "Fabric campaign snapshots",
+    "category": "performance",
+    "heading": "Lead generation, as reported.",
+    "description": "A second supplied Meta Ads Manager snapshot for the Linen Fabric Leads campaign. Client name and reporting period are not shown.",
+    "images": [
+      "linen-1677"
+    ],
+    "metrics": [
+      [
+        "1,677",
+        "Form leads · snapshot 2"
+      ],
+      [
+        "₹9.36",
+        "Cost per lead · snapshot 2"
+      ],
+      [
+        "₹15,695.90",
+        "Spend · snapshot 2"
+      ]
+    ],
+    "note": "86,666 reach · 204,351 impressions. Reporting periods may overlap; not combined with snapshot 1."
+  }
+]

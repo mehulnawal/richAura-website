@@ -14,7 +14,7 @@
   function buildUrl(data, recipient) {
     if (!/^[1-9]\d{9,14}$/.test(recipient)) throw new Error('Invalid recipient');
     if (Object.keys(validate(data)).length) throw new Error('Invalid enquiry');
-    const message = ['New Website Enquiry — Rich Aura', '', `Name: ${data.name.trim()}`, `Business Email: ${data.email.trim()}`, `Phone / WhatsApp: ${data.phone.trim()}`, '', `Interested Service: ${services[data.service]}`, '', 'Project / Brand Details:', data.details.trim(), '', 'Source: Rich Aura Website'].join('\n');
+    const message = ['New Website Enquiry — Richaura', '', `Name: ${data.name.trim()}`, `Business Email: ${data.email.trim()}`, `Phone / WhatsApp: ${data.phone.trim()}`, '', `Interested Service: ${services[data.service]}`, '', 'Project / Brand Details:', data.details.trim(), '', 'Source: Richaura Website'].join('\n');
     return `https://wa.me/${recipient}?text=${encodeURIComponent(message)}`;
   }
   root.RichAuraEnquiry = Object.freeze({ validate, buildUrl, services });
