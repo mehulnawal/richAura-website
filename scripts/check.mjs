@@ -9,7 +9,7 @@ for (const file of ['index.html', 'services.html', 'contact.html', 'about.html',
   const navigationLinks = [...navigation.matchAll(/href="([^"]+)"/g)].map(m => m[1]);
   assert.equal(navigationLinks.length, new Set(navigationLinks).size, `${file}: duplicate menu links`);
   for (const route of ['/', '/about', '/services', '/projects', '/contact']) assert(navigationLinks.includes(route));
-  for (const [, asset] of page.matchAll(/(?:src|href)="([^"?#]+\.(?:css|js|svg|png|ttf))"/g)) {
+  for (const [, asset] of page.matchAll(/(?:src|href)="([^"?#]+\.(?:css|js|svg|png|webp|jpe?g|ttf))"/g)) {
     await access(new URL(asset.replace(/^\//, ''), root));
   }
 }
@@ -63,7 +63,7 @@ for (const service of Object.keys(enquiry.services)) {
 const projects = JSON.parse(await readFile(new URL('projects.json', root), 'utf8'));
 assert.equal(projects.length, 12);
 assert.equal(new Set(projects.map(p => p.id)).size, projects.length);
-for (const project of projects) for (const image of project.images) await access(new URL(`assets/work/${image}.png`, root));
+for (const project of projects) for (const image of project.images) await access(new URL(`assets/work/${image}.webp`, root));
 assert.equal(projects.flatMap(p => p.images).length, 20);
 const reports = projects.filter(p => p.category === 'performance');
 assert.equal(reports.length, 4);
