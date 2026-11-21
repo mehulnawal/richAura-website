@@ -1,6 +1,20 @@
 (() => {
   'use strict';
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const connection = navigator.connection;
+  if (!connection?.saveData && !['slow-2g', '2g'].includes(connection?.effectiveType)) {
+    const prefetchPages = () => {
+      for (const route of ['/', '/about', '/services', '/projects', '/contact']) {
+        if (route === window.location.pathname || route + '/' === window.location.pathname) continue;
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = route;
+        document.head.append(link);
+      }
+    };
+    if ('requestIdleCallback' in window) requestIdleCallback(prefetchPages, { timeout: 2500 });
+    else window.setTimeout(prefetchPages, 1500);
+  }
   const activeAnimations = new Set();
   if ('IntersectionObserver' in window) {
     const reveals = new IntersectionObserver(entries => {
