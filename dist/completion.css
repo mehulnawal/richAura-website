@@ -39,3 +39,9 @@
 .service-choice:has(input:checked){background:#edf8fb;border-color:#196e87}
 .service-options[aria-invalid=true] .service-choices{outline:1px solid #b42318;outline-offset:3px;border-radius:6px}
 @media(max-width:600px){.service-choices{grid-template-columns:1fr}.contact-info{gap:24px}}
+.service-detail .service-visual.service-image{padding:0;min-height:0!important;background:#080808;overflow:hidden;display:block}
+.service-image img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:contain}
+.founder-portrait{display:block;width:min(100%,360px);height:auto;margin-top:24px;border-radius:8px}
+.founder-avatar{width:64px;height:64px;object-fit:cover;object-position:center 66%;border-radius:50%;flex-shrink:0}
+.home-page .service-top:has(.service-preview-image){height:auto;margin-bottom:24px}
+.service-preview-image{width:min(100%,260px);height:auto;border-radius:8px;display:block;margin:auto}
