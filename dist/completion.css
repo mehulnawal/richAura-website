@@ -24,3 +24,5 @@
 @media(max-width:1000px){.project-collection .static-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:480px){.project-collection .static-gallery{grid-template-columns:1fr;padding:0;gap:18px}.static-report{padding:10px}}
 @media(prefers-reduced-motion:reduce){.portfolio-card{scroll-behavior:auto}}
+/* Filtering must take precedence over responsive card display rules. */
+.portfolio-card[hidden]{display:none!important}
