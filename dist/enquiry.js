@@ -7,14 +7,14 @@
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) errors.email = 'Please enter a valid email address.';
     const phone = data.phone.trim();
     if (!/^\+?[\d\s().-]+$/.test(phone) || !/^\d{7,15}$/.test(phone.replace(/\D/g, ''))) errors.phone = 'Please enter a valid phone number, including country code if needed.';
-    if (!Object.hasOwn(services, data.service)) errors.service = 'Please choose one of the four services.';
+    if (!Array.isArray(data.service) || !data.service.length || data.service.some(value => !Object.hasOwn(services, value))) errors.service = 'Please choose at least one service.';
     if (data.details.trim().length < 10) errors.details = 'Please add at least 10 characters about your brand or project.';
     return errors;
   }
   function buildUrl(data, recipient) {
     if (!/^[1-9]\d{9,14}$/.test(recipient)) throw new Error('Invalid recipient');
     if (Object.keys(validate(data)).length) throw new Error('Invalid enquiry');
-    const message = ['New Website Enquiry — Richaura', '', `Name: ${data.name.trim()}`, `Business Email: ${data.email.trim()}`, `Phone / WhatsApp: ${data.phone.trim()}`, '', `Interested Service: ${services[data.service]}`, '', 'Project / Brand Details:', data.details.trim(), '', 'Source: Richaura Website'].join('\n');
+    const message = ['New Website Enquiry — Richaura', '', `Name: ${data.name.trim()}`, `Business Email: ${data.email.trim()}`, `Phone / WhatsApp: ${data.phone.trim()}`, '', 'Interested Services:', ...[...new Set(data.service)].map(value => `• ${services[value]}`), '', 'Project / Brand Details:', data.details.trim(), '', 'Source: Richaura Website'].join('\n');
     return `https://wa.me/${recipient}?text=${encodeURIComponent(message)}`;
   }
   root.RichAuraEnquiry = Object.freeze({ validate, buildUrl, services });
@@ -25,11 +25,13 @@
   const handoff = document.querySelector('#handoff');
   const fallback = document.querySelector('#whatsapp-fallback');
   const keys = ['name', 'email', 'phone', 'service', 'details'];
-  const requested = new URLSearchParams(location.search).get('service');
-  if (Object.hasOwn(services, requested)) form.elements.service.value = requested;
-  const read = () => Object.fromEntries(keys.map(key => [key, form.elements[key].value]));
+  const choices = [...form.querySelectorAll('input[name="service"]')];
+  const group = document.getElementById('service');
+  const requested = new URLSearchParams(location.search).getAll('service');
+  choices.forEach(input => { input.checked = requested.includes(input.value); });
+  const read = () => Object.fromEntries(keys.map(key => [key, key === 'service' ? choices.filter(input => input.checked).map(input => input.value) : form.elements[key].value]));
   const renderError = (key, error) => {
-    const input = form.elements[key];
+    const input = key === 'service' ? group : form.elements[key];
     document.getElementById(`${key}-error`).textContent = error || '';
     if (error) input.setAttribute('aria-invalid', 'true');
     else input.removeAttribute('aria-invalid');
@@ -38,7 +40,7 @@
   form.addEventListener('input', event => {
     handoff.hidden = true;
     fallback.removeAttribute('href');
-    if (keys.includes(event.target.name) && event.target.hasAttribute('aria-invalid')) renderError(event.target.name, validate(read())[event.target.name]);
+    if (keys.includes(event.target.name) && (event.target.hasAttribute('aria-invalid') || (event.target.name === 'service' && group.hasAttribute('aria-invalid')))) renderError(event.target.name, validate(read())[event.target.name]);
     if (!form.querySelector('[aria-invalid="true"]')) summary.hidden = true;
   });
   form.addEventListener('submit', event => {
@@ -50,7 +52,8 @@
     if (Object.keys(errors).length) {
       summary.textContent = 'Please check the highlighted fields before continuing.';
       summary.hidden = false;
-      form.elements[Object.keys(errors)[0]].focus();
+      const first = Object.keys(errors)[0];
+      (first === 'service' ? choices[0] : form.elements[first]).focus();
       return;
     }
     try {

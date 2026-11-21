@@ -33,7 +33,8 @@ for (const file of ['services.html', 'contact.html', 'about.html', 'projects.htm
   for (const [, asset] of page.matchAll(/(?:src|href)="\/(assets\/[^\"]+|styles\.css|app\.js|config\.js|enquiry\.js)"/g)) await access(new URL(asset, root));
 }
 const contact = await readFile(new URL('contact.html', root), 'utf8');
-assert.equal((contact.match(/<label for=/g) || []).length, 5);
+assert.equal((contact.match(/type="checkbox"/g) || []).length, 4);
+assert(contact.includes('<legend>Select Services Interested In</legend>'));
 const servicePage = await readFile(new URL('services.html', root), 'utf8');
 assert.equal((servicePage.match(/class="service-detail"/g) || []).length, 4);
 const scope = { window: {} };
@@ -48,13 +49,13 @@ for (const asset of ['reference.css','palette.css','assets/growth-target.svg']) 
 const enquiryScope = {};
 vm.runInNewContext(await readFile(new URL('enquiry.js', root), 'utf8'), enquiryScope);
 const enquiry = enquiryScope.RichAuraEnquiry;
-const sample = {name:'Test Brand', email:'test@example.com', phone:'+91 9879216262', service:'social-media', details:'Review & growth?\nBrand: Café + Studio'};
+const sample = {name:'Test Brand', email:'test@example.com', phone:'+91 9879216262', service:['social-media'], details:'Review & growth?\nBrand: Café + Studio'};
 assert.equal(Object.keys(enquiry.validate(sample)).length, 0);
 assert.equal(Object.keys(enquiry.validate({name:' ',email:'bad',phone:'abc',service:'unknown',details:'short'})).length, 5);
 assert(Object.hasOwn(enquiry.validate({...sample,phone:'+123'}),'phone'));
-assert(Object.hasOwn(enquiry.validate({...sample,service:'__proto__'}),'service'));
+assert(Object.hasOwn(enquiry.validate({...sample,service:['__proto__']}),'service'));
 for (const service of Object.keys(enquiry.services)) {
-  const link = new URL(enquiry.buildUrl({...sample,service},config.whatsappRecipient));
+  const link = new URL(enquiry.buildUrl({...sample,service:[service]},config.whatsappRecipient));
   assert.equal(link.pathname, '/917984964553');
   assert(link.searchParams.get('text').includes(sample.details));
   assert(link.searchParams.get('text').includes(enquiry.services[service]));
@@ -75,3 +76,13 @@ const gallery = projectPage.match(/<div class="portfolio-grid">[\s\S]*?<\/sectio
 assert(!/<(?:a|button|summary|details)\b/.test(gallery), 'Project cards and images must be static');
 assert.equal((gallery.match(/data-category="performance"/g) || []).length, 4);
 console.log('PASS: five pages, local assets, anchors, IDs, 2 Home / 4 Services previews, 12 static collections / 20 images / 4 reports, 5 form fields, validation and client WhatsApp encoding.');
+
+assert(Object.hasOwn(enquiry.validate({...sample, service:[]}), 'service'));
+const serviceKeys = Object.keys(enquiry.services);
+for (let mask=1; mask<16; mask++) {
+ const selected = serviceKeys.filter((key,i)=>mask & (1<<i));
+ const message = new URL(enquiry.buildUrl({...sample, service:selected},config.whatsappRecipient)).searchParams.get('text');
+ for (const key of serviceKeys) assert.equal(message.includes('• '+enquiry.services[key]), selected.includes(key));
+}
+assert.throws(()=>enquiry.buildUrl({...sample,service:['social-media','unknown']},config.whatsappRecipient));
+console.log('PASS: all 15 service combinations encoded correctly; empty/unknown selections rejected.');
